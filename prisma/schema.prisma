@@ -13,10 +13,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model users {
   id        Int      @id @default(autoincrement())
-  username  String
-  password  String   
+  username  String  @unique
+  password  String
+  email     String   @unique
   createdAt DateTime @default(now())
-  
+
+  // Define a relation to recipes created by this user
+ recipes   recipes[]  @relation("user_recipes")
+}
+
+model recipes {
+  id          Int      @id @default(autoincrement())
+  title       String
+  ingredients String[]
+  instructions String
+  tags        String[]
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+
+  // Define a relation to the user who created this recipe
+  user        users    @relation("user_recipes", fields: [userId], references: [id])
+  userId      Int      @default(1) 
+
 }

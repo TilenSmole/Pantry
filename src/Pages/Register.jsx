@@ -1,45 +1,69 @@
 
 import { Toaster } from "react-hot-toast"
-
-
+import { useFormik } from 'formik';
+import Axios from "axios"
 
 
 function Register() {
 
-    const handleSubmit = (event) => {
-        event.preventDefault(); 
-        const username = event.target.elements.uname.value;
-        const password = event.target.elements.psw.value; 
+ 
+    const formik = useFormik({
+        initialValues: {
+            username: '',
+            email: '',
+            password: '',
+        },
 
+        onSubmit: async (values) => {
+            try {
+                const response = await Axios.post(
+                    `http://localhost:5000/register`,
+                    { email: formik.values.email, password: formik.values.password, username: formik.values.username },
+                );
 
-        if (username.trim() === '' || password.trim() === '') {
-            alert('Please enter both username and password.');
-            return;
-        }
+                console.log('Registration successful:', response.data);
 
-   
-        console.log("Submitting:", { username, password });
-
-        event.target.elements.uname.value = '';
-        event.target.elements.psw.value = '';
-
-
-
-
-    }
-
+            } catch (error) {
+                console.error('Error signing in:', error);
+            }
+        },
+    });
 
     return (
         <>
-            <div>
-                <label htmlFor="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required />
+            <form onSubmit={formik.handleSubmit}>
 
-                <label htmlFor="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required />
+                <label htmlFor="email">Email Address</label>
+                <input
+                    id="email"
+                    name="email"
+                    type="text"
+                    onChange={formik.handleChange}
+                    value={formik.values.email}
+                />
 
-                <button type="submit" onClick={handleSubmit}>Login</button>
-            </div>
+                <label htmlFor="password">Password</label>
+                <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    onChange={formik.handleChange}
+                    value={formik.values.password}
+                />
+
+                <label htmlFor="username">Username</label>
+                <input
+                    id="username"
+                    name="username"
+                    type="username"
+                    onChange={formik.handleChange}
+                    value={formik.values.username}
+                />
+
+
+                <button type="submit">Submit</button>
+
+            </form>
         </>
     );
 }
