@@ -2,10 +2,10 @@
 import { Toaster } from "react-hot-toast"
 import { useFormik } from 'formik';
 import Axios from "axios"
+import { useNavigate } from "react-router-dom";
 
-
-function Login() {
-
+function Login({setLogin}) {
+    const navigate = useNavigate();
 
     const formik = useFormik({
         initialValues: {
@@ -20,7 +20,10 @@ function Login() {
                     { email: formik.values.email, password: formik.values.password },
                 );
 
-                console.log('Registration successful:', response.data);
+                console.log('Login successful:', response.data);
+                localStorage.setItem("sessionToken", response.data.token);
+                setLogin(true)
+                navigate("/");
 
             } catch (error) {
                 console.error('Error signing in:', error);

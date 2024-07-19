@@ -1,9 +1,14 @@
 import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 const bcrypt = require("bcrypt")
-
 const prisma = new PrismaClient();
 const saltRounds = process.env.SALT
+import { generateToken, verifyToken } from "./tokenGenerator"
+const jwt = require('jsonwebtoken');
+
+
+
+
 
 export async function loginUser(req: Request, res: Response) {
     const { email, password } = req.body;
@@ -25,7 +30,15 @@ export async function loginUser(req: Request, res: Response) {
             return res.status(401).json({ error: 'Invalid credentials' });
         }
 
-        res.status(200).json({ message: 'Login successful', user: user });
+        const token =  generateToken(user)
+
+
+        res.send({ token });
+
+
+
+
+      //  res.status(200).json({ message: 'Login successful', user: user });
     } catch (error) {
         console.error('Error logging in user:', error);
         res.status(500).json({ error: 'Internal server error' });
