@@ -1,5 +1,5 @@
 {
-    "meat_and_poultry": [
+    "meat": [
         { "id": 1, "name": "Chicken Breast", "calories": 165, "protein": 31.0, "fat": 3.6, "carbohydrates": 0.0, "fiber": 0.0, "sugar": 0.0, "allergens": [], "is_vegan": false, "is_vegetarian": false },
         { "id": 2, "name": "Chicken Thigh", "calories": 209, "protein": 26.0, "fat": 10.9, "carbohydrates": 0.0, "fiber": 0.0, "sugar": 0.0, "allergens": [], "is_vegan": false, "is_vegetarian": false },
         { "id": 3, "name": "Turkey Breast", "calories": 135, "protein": 30.0, "fat": 1.0, "carbohydrates": 0.0, "fiber": 0.0, "sugar": 0.0, "allergens": [], "is_vegan": false, "is_vegetarian": false },

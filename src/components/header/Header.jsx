@@ -1,14 +1,15 @@
 import { CgProfile } from "react-icons/cg";
 import { useState, useEffect } from 'react';
+import { useCookies } from 'react-cookie'
 
 function Header(login) {
-
+  const [cookies] = useCookies(['sessionToken']);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const checkIsAuthenticated = localStorage.getItem('sessionToken');
-    console.log("checkIsAuthenticated:", checkIsAuthenticated);
-    setIsAuthenticated(!!checkIsAuthenticated); 
+    setIsAuthenticated(cookies.sessionToken ? true : false); 
+
+
   }, [login]); 
 
   return (

@@ -3,9 +3,11 @@ import { Toaster } from "react-hot-toast"
 import { useFormik } from 'formik';
 import Axios from "axios"
 import { useNavigate } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 
-function Login({setLogin}) {
+function Login({ setLogin }) {
     const navigate = useNavigate();
+    const [cookies, setCookie] = useCookies(['sessionToken']);
 
     const formik = useFormik({
         initialValues: {
@@ -21,7 +23,7 @@ function Login({setLogin}) {
                 );
 
                 console.log('Login successful:', response.data);
-                localStorage.setItem("sessionToken", response.data.token);
+                setCookie("sessionToken", response.data.token);
                 setLogin(true)
                 navigate("/");
 
@@ -53,7 +55,7 @@ function Login({setLogin}) {
                     value={formik.values.password}
                 />
 
-               
+
 
 
                 <button type="submit">Submit</button>

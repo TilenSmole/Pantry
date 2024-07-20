@@ -1,5 +1,5 @@
 {
-    "spices_and_herbs": [
+    "spicesHerbs": [
       { "id": 1, "name": "Basil", "calories": 23, "protein": 3.2, "fat": 0.6, "carbohydrates": 2.7, "fiber": 1.6, "sugar": 0.3, "allergens": [], "is_vegan": true, "is_vegetarian": true },
       { "id": 2, "name": "Oregano", "calories": 265, "protein": 9.0, "fat": 4.3, "carbohydrates": 64.0, "fiber": 42.0, "sugar": 4.0, "allergens": [], "is_vegan": true, "is_vegetarian": true },
       { "id": 3, "name": "Thyme", "calories": 101, "protein": 5.2, "fat": 1.7, "carbohydrates": 24.0, "fiber": 14.0, "sugar": 0.4, "allergens": [], "is_vegan": true, "is_vegetarian": true },

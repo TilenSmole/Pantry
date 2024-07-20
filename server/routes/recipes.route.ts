@@ -1,12 +1,13 @@
-import { getRecepies } from "../controllers/recipes.controller";
- // import verifyAccessToken from "../../middlewares/verifyToken"
+import { getRecepies , addRecepie} from "../controllers/recipes.controller";
+import   {authenticateMiddleware}  from "../middleweartester"
   const express = require("express")
   
   const router = express.Router()
-  console.log("Reached /recipes endpoint");
 
   router.get("/", getRecepies)
-  console.log("Reached /recipes endpoint");
+  router.post("/add-recipe",authenticateMiddleware, addRecepie)
+
+
 
 
   module.exports = router

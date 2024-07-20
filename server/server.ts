@@ -2,8 +2,9 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors'; // Import CORS middleware
 import { registerUser } from './register'; 
 import { loginUser } from './login'; 
-
+import cookieParser from 'cookie-parser';
 const recepy_route = require('./routes/recipes.route') 
+const account_route = require('./routes/account.route') 
 
 
 const app = express();
@@ -12,9 +13,13 @@ const PORT = process.env.PORT || 5000;
 // Middleware to enable CORS
 const corsOptions: cors.CorsOptions = {
     origin: 'http://localhost:3000',
-    optionsSuccessStatus: 200 
+    credentials: true,
 };
 
+
+  
+
+app.use(cookieParser());
 app.use(cors(corsOptions));
 
 app.use((req: Request, res: Response, next: NextFunction) => {
@@ -26,6 +31,9 @@ app.use(express.json());
 
 app.post('/register', registerUser);
 app.post('/login', loginUser);
+
+
+app.use('/account', account_route);
 
 app.use('/recipes', recepy_route);
 

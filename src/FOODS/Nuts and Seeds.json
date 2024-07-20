@@ -1,5 +1,5 @@
 {
-    "NutsAndSeeds": [
+    "nuts": [
         { "id": 1, "name": "Almond", "calories": 579, "protein": 21.15, "fat": 49.42, "carbohydrates": 21.55, "fiber": 12.5, "sugar": 4.35, "allergens": ["Nuts"], "is_vegan": true, "is_vegetarian": true },
         { "id": 2, "name": "Cashew", "calories": 553, "protein": 18.22, "fat": 43.85, "carbohydrates": 30.19, "fiber": 3.3, "sugar": 5.91, "allergens": ["Nuts"], "is_vegan": true, "is_vegetarian": true },
         { "id": 3, "name": "Walnut", "calories": 654, "protein": 15.23, "fat": 65.21, "carbohydrates": 13.71, "fiber": 6.7, "sugar": 2.6, "allergens": ["Nuts"], "is_vegan": true, "is_vegetarian": true },
