@@ -17,6 +17,9 @@ export async function getRecepies(req: Request, res: Response, next: NextFunctio
       //console.error('Error:', error);
     }
   }
+
+
+  
 export async function addRecepie(req: Request, res: Response, next: NextFunction) {
     try {
       const userId = res.locals.decodedToken.id;
@@ -24,7 +27,7 @@ export async function addRecepie(req: Request, res: Response, next: NextFunction
 
      const all_recepies = await prisma.recipes.create({ 
         data:{
-          title: title,
+          name: title,
           ingredients: ingredients,
           instructions: instructions,
           cook_time: cook_time,

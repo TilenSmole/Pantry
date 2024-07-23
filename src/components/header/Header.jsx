@@ -18,7 +18,7 @@ function Header(login) {
       <a href="../App">HOME</a>
       <a href="../Pantry">PANTRY</a>
       <a href="../ShoppingList">      SHOPPING LIST</a>
-      <a href="../Recepies">      RECEPIES</a>
+      <a href="../Recipes">      RECEPIES</a>
       <a href="../Ingredients">      INGERDIENTS</a>
 
       {isAuthenticated ? (

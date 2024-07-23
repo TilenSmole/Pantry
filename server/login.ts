@@ -11,8 +11,8 @@ const jwt = require('jsonwebtoken');
 
 
 export async function loginUser(req: Request, res: Response) {
+    console.log('Request body:', req.body); // Debug print
     const { email, password } = req.body;
-
     try {
         const user = await prisma.users.findUnique({
             where: {

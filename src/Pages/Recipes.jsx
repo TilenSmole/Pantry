@@ -3,13 +3,12 @@ import { Toaster } from "react-hot-toast"
 import { useFormik } from 'formik';
 import Axios from "axios"
 import { useState, useEffect } from 'react';
-import HardcodedRecepies from '../RECEPIES/recepies.json';
+import HardcodedRecepies from '../RECIPES/recipes.json';
 import Fruits from '../FOODS/Fruits.json';
 import { ShowIngredients } from '../components/ShowIngredients.js';
-import { eventNames } from "process";
 
 
-function Recepies() {
+function Recipes() {
     const [allRecepies, setAllRecepies] = useState([]);
     const [hardcodedRecepies, setHardcodedRecepies] = useState([]);
     const [fruits, setFruits] = useState([]);
@@ -230,4 +229,4 @@ function Recepies() {
     );
 }
 
-export default Recepies;
+export default Recipes;

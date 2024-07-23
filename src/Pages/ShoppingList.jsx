@@ -9,13 +9,12 @@ import { ShowIngredients } from '../components/ShowIngredients.js';
 function ShoppingList() {
   const [shoppingList, setShoppingList] = useState();
   const [suggestions, setSuggestions] = useState([]);
-  const [items, setitems] = useState([]);
+  const [items, setItems] = useState([]);
 
 
   const formik = useFormik({
     initialValues: {
       name: '',
-      items: [],
       item: "",
       quantity: ""
 
@@ -24,16 +23,17 @@ function ShoppingList() {
     onSubmit: async (values) => {
       try {
         const response = await Axios.post(
-          `http://localhost:5000/account/add-a-shopping-list`,
+          `http://localhost:5000/shopping-list/add-a-shopping-list`,
           {
-
+            name: formik.values.name,
+            items: items
           },
           { withCredentials: true, }
 
         );
 
       } catch (error) {
-        console.error('Error uploading the recipie:', error);
+        console.error('Error uploading a shopping list:', error);
       }
     },
 
@@ -44,7 +44,7 @@ function ShoppingList() {
 
   /*const getUserShoppingList = async () => {
     try {
-      const userFetch = await Axios.get('http://localhost:5000/account/get-users-shopping-list',
+      const userFetch = await Axios.get('http://localhost:5000/shopping-list/get-users-shopping-list',
         { withCredentials: true, }
       );
       setShoppingList(userFetch.data);
@@ -57,9 +57,16 @@ function ShoppingList() {
   const showIngredient = (e) => {
     setSuggestions(ShowIngredients(e.target.value))
   }
-  const addIngredient = (newOne, quantity) => {
-    setitems([...items, [quantity, newOne]]);
+  const addIngredient = (name, quantity) => {
+    setItems([...items, { name: name, quantity: quantity }]);
+  /*  formik.setFieldValue('item', '');
+    formik.setFieldValue('quantity', '');
+    setSuggestions([]);*/
   };
+
+
+
+
   useEffect(() => {
     // getUserShoppingList();
   }, []);
@@ -115,20 +122,12 @@ function ShoppingList() {
       {suggestions.length > 0 && (
 
         <ul >
-
           {suggestions.map((suggestion, index) => (
-
             <li
-
               key={index}
-
               onClick={() => addIngredient(suggestion,formik.values.quantity)}
-
-
             >
-
               {suggestion}
-
             </li>
 
           ))}
@@ -137,13 +136,16 @@ function ShoppingList() {
 
       )}
 
-      {items.length > 0 && (
-        <div>
-          {items.map((item, index) => (
-            <p key={index}>{item}</p>
-          ))}
-        </div>
-      )}
+{items.length > 0 && (
+  <div>
+    {items.map((item, index) => (
+      <p key={index}>
+        {item.name} - {item.quantity}
+      </p>
+    ))}
+  </div>
+)}
+
 
 
 

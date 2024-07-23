@@ -6,7 +6,7 @@ import Login from './Pages/Login'
 import Register from './Pages/Register'
 import ShoppingList from './Pages/ShoppingList'
 import SessionChecker from './components/SessionChecker'
-import Recepies from './Pages/Recepies'
+import Recipes from './Pages/Recipes'
 import Ingredients from './Pages/Ingredients'
 
 import { useState, useEffect } from 'react';
@@ -21,7 +21,7 @@ function App() {
     <Router>
       <Header login={login}/>
       <Routes>
-      <Route path="/recepies" element={<Recepies />} />
+      <Route path="/recipes" element={<Recipes />} />
         <Route path="/pantry" element={<Pantry />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login  setLogin={setLogin} /> } />

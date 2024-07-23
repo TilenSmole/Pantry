@@ -27,9 +27,9 @@ model users {
 
 model recipes {
   id           Int      @id @default(autoincrement())
-  title        String
-  ingredients  Json
+  name        String 
   instructions String
+  ingredients Json
   tags         String[]
   imageUrl     String?
   createdAt    DateTime @default(now())
@@ -70,7 +70,6 @@ model ListItem {
   listId   Int
   list     ShoppingList @relation("ShoppingListItems", fields: [listId], references: [id])
   name     String
-  quantity Int
-  unit     String?
+  quantity String?      // Ensure this is a String
   checked  Boolean      @default(false)
 }

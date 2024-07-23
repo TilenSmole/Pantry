@@ -1,4 +1,4 @@
-import { getAccount, addShoppingList, getShoppingList } from "../controllers/account.controller";
+import { getAccount } from "../controllers/account.controller";
 import   {authenticateMiddleware}  from "../middleweartester"
 
 
@@ -7,8 +7,7 @@ import   {authenticateMiddleware}  from "../middleweartester"
   const router = express.Router()
 
   router.get("/",authenticateMiddleware, getAccount)
-  router.get("/get-users-shopping-list",authenticateMiddleware, getShoppingList)
-  router.get("/add-a-shopping-list",authenticateMiddleware, addShoppingList)
+
 
 
   module.exports = router
