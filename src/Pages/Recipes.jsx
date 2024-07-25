@@ -178,7 +178,7 @@ function Recipes() {
 
                             {suggestion}
 
-                        </li>
+                        </li>   
 
                     ))}
 
@@ -199,7 +199,7 @@ function Recipes() {
 
             {allRecepies && allRecepies.map((recipe, index) => (
                 <div key={recipe.id}>
-                    <h2>{recipe.title}</h2>
+                    <h2>{recipe.name}</h2>
                     <p>
                         {recipe.ingredients.map((ingredient, index) => (
 

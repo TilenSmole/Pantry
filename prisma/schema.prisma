@@ -21,23 +21,25 @@ model users {
   createdAt DateTime @default(now())
 
   // Define a relation to recipes created by this user
-  recipes      recipes[]      @relation("user_recipes")
-  ShoppingList ShoppingList[]
+  recipes  recipes[]  @relation("user_recipes")
+  // ShoppingList ShoppingList[]
+  ListItem ListItem[]
+  storage  storage[]
 }
 
 model recipes {
   id           Int      @id @default(autoincrement())
-  name        String 
+  name         String
   instructions String
-  ingredients Json
+  ingredients  String[]
   tags         String[]
   imageUrl     String?
   createdAt    DateTime @default(now())
   prep_time    String?
   cook_time    String?
-  // Define a relation to the user who created this recipe
-  user          users          @relation("user_recipes", fields: [userId], references: [id])
-  userId        Int            @default(1)
+  // Define a relation to the user who created this recipes
+  user         users    @relation("user_recipes", fields: [userId], references: [id])
+  userId       Int      @default(1)
 }
 
 model Foods {
@@ -55,21 +57,27 @@ model Foods {
   isVegetarian  Boolean?
 }
 
-model ShoppingList {
-  id        Int        @id @default(autoincrement())
-  userId    Int
-  users     users       @relation(fields: [userId], references: [id])
-  name      String
-  createdAt DateTime   @default(now())
-  items     ListItem[] @relation("ShoppingListItems")
-
-}
+//model ShoppingList {
+//  id        Int        @id @default(autoincrement())
+//  userId    Int
+//  users     users       @relation(fields: [userId], references: [id])
+//  name      String
+//  createdAt DateTime   @default(now())
+//  items     ListItem[] @relation("ShoppingListItems")
+//
+//}
 
 model ListItem {
-  id       Int          @id @default(autoincrement())
-  listId   Int
-  list     ShoppingList @relation("ShoppingListItems", fields: [listId], references: [id])
-  name     String
-  quantity String?      // Ensure this is a String
-  checked  Boolean      @default(false)
+  id      Int     @id @default(autoincrement())
+  item    String
+  checked Boolean @default(false)
+  userId  Int
+  users   users   @relation(fields: [userId], references: [id])
+}
+
+model storage {
+  id     Int    @id @default(autoincrement())
+  item   String
+  userId Int
+  users  users  @relation(fields: [userId], references: [id])
 }

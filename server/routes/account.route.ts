@@ -1,5 +1,5 @@
-import { getAccount } from "../controllers/account.controller";
-import   {authenticateMiddleware}  from "../middleweartester"
+import { getAccount ,getAccountM } from "../controllers/account.controller";
+import   {authenticateMiddleware, authenticateMiddlewareM}  from "../middleweartester"
 
 
   const express = require("express")
@@ -8,7 +8,7 @@ import   {authenticateMiddleware}  from "../middleweartester"
 
   router.get("/",authenticateMiddleware, getAccount)
 
-
+  router.get("/get-data-mobile", authenticateMiddlewareM, getAccountM)
 
   module.exports = router
   

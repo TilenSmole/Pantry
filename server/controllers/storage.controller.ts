@@ -22,13 +22,11 @@ console.log(all_recepies.length);
 
 
   
-export async function addItemFromListMobile(req: Request, res: Response, next: NextFunction) {
+export async function addRecepie(req: Request, res: Response, next: NextFunction) {
     try {
       const userId = res.locals.decodedToken.id;
-      const { id, ingredients,instructions , imageUrl, prep_time, cook_time} = req.body;
-
-
-
+      const { title, ingredients,instructions , imageUrl, prep_time, cook_time} = req.body;
+console.log(ingredients);
      const all_recepies = await prisma.recipes.create({ 
         data:{
           name: title,

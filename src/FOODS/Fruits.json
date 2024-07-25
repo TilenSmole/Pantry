@@ -1,5 +1,5 @@
 {
-    "fruits": [
+    "   ": [
         { "id": 1, "name": "Apple", "calories": 52, "protein": 0.26, "fat": 0.17, "carbohydrates": 13.81, "fiber": 2.4, "sugar": 10.39, "allergens": [], "is_vegan": true, "is_vegetarian": true },
         { "id": 2, "name": "Banana", "calories": 89, "protein": 1.09, "fat": 0.33, "carbohydrates": 22.84, "fiber": 2.6, "sugar": 12.23, "allergens": [], "is_vegan": true, "is_vegetarian": true },
         { "id": 3, "name": "Orange", "calories": 47, "protein": 0.9, "fat": 0.12, "carbohydrates": 11.75, "fiber": 2.4, "sugar": 9.35, "allergens": [], "is_vegan": true, "is_vegetarian": true },

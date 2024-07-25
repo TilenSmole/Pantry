@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 const recepy_route = require('./routes/recipes.route') 
 const account_route = require('./routes/account.route') 
 const shopping_list_route = require('./routes/shopping_list.route') 
+const storage_route = require('./routes/storage.route') 
 
 
 const app = express();
@@ -35,6 +36,7 @@ app.post('/login', loginUser);
 
 
 app.use('/account', account_route);
+app.use('/storage', storage_route);
 
 app.use('/recipes', recepy_route);
 app.use('/shopping-list', shopping_list_route);
