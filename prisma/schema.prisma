@@ -37,6 +37,7 @@ model recipes {
   createdAt    DateTime @default(now())
   prep_time    String?
   cook_time    String?
+  comment      String?
   // Define a relation to the user who created this recipes
   user         users    @relation("user_recipes", fields: [userId], references: [id])
   userId       Int      @default(1)
@@ -78,6 +79,7 @@ model ListItem {
 model storage {
   id     Int    @id @default(autoincrement())
   item   String
+  category String[]
   userId Int
   users  users  @relation(fields: [userId], references: [id])
 }

@@ -33,6 +33,7 @@ console.log('¸dsfsadf');
 
     // Remove 'Bearer ' from the start of the header value
     const token = authHeader.split(' ')[1];
+    console.log(token);
 
     try {
         console.log('Extracted Token:', token);

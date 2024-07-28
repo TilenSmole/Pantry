@@ -102,3 +102,30 @@ export async function deleteItemMobile(req: Request, res: Response, next: NextFu
         res.status(500).json({ error: 'Internal Server Error' });
     }
 }
+
+
+export async function updateShoppingListMobile(req: Request, res: Response, next: NextFunction) {
+    try {
+        const userId = res.locals.decodedToken.id;
+        const { item, id } = req.body;
+        console.log(item);
+        console.log(id);
+
+      //  if(item && id){
+            await prisma.listItem.update({
+                where: {
+                    id : Number(id)
+                },
+                data: {
+                    item : item, 
+                },
+            });
+    //    }
+
+
+         return res.status(200).json();
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}

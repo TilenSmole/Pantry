@@ -22,10 +22,10 @@ console.log(all_recepies.length);
 
 
   
-export async function addItemFromListMobile(req: Request, res: Response, next: NextFunction) {
+export async function addRecepie(req: Request, res: Response, next: NextFunction) {
     try {
       const userId = res.locals.decodedToken.id;
-      const { id, ingredients,instructions , imageUrl, prep_time, cook_time} = req.body;
+      const { id, title, ingredients,instructions , imageUrl, prep_time, cook_time, comment} = req.body;
 
 
 
@@ -37,7 +37,8 @@ export async function addItemFromListMobile(req: Request, res: Response, next: N
           cook_time: cook_time,
           prep_time: prep_time,
           imageUrl : imageUrl,
-          userId :userId
+          userId :userId,
+          comment: comment
         }
 
      })

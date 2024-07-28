@@ -1,4 +1,4 @@
-import { addShoppingList , getShoppingListMobile, addShoppingListMobile, deleteItemMobile} from "../controllers/shopping_list.controller";
+import { addShoppingList , getShoppingListMobile, addShoppingListMobile,updateShoppingListMobile, deleteItemMobile} from "../controllers/shopping_list.controller";
 import   {authenticateMiddleware, authenticateMiddlewareM}  from "../middleweartester"
   const express = require("express")
   
@@ -8,6 +8,10 @@ import   {authenticateMiddleware, authenticateMiddlewareM}  from "../middleweart
   router.post("/add-a-shopping-list",authenticateMiddleware, addShoppingList)
   router.post("/add-a-shopping-list-mobile",authenticateMiddlewareM, addShoppingListMobile)
   router.delete("/delete-item-mobile", authenticateMiddlewareM, deleteItemMobile)
+  router.put("/update-a-shopping-list-mobile",authenticateMiddlewareM, updateShoppingListMobile)
+
+
+
 
   module.exports = router
   
