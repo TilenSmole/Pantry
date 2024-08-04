@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const recipes_controller_1 = require("../controllers/recipes.controller");
+const middleweartester_1 = require("../middleweartester");
+const express = require("express");
+const router = express.Router();
+router.get("/", recipes_controller_1.getRecepies);
+router.post("/add-recipe", middleweartester_1.authenticateMiddleware, recipes_controller_1.addRecepie);
+router.post("/add-recipe-mobile", middleweartester_1.authenticateMiddlewareM, recipes_controller_1.addRecepie);
+module.exports = router;

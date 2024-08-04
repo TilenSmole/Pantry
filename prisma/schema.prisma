@@ -70,7 +70,8 @@ model Foods {
 
 model ListItem {
   id      Int     @id @default(autoincrement())
-  item    String
+  amount    String
+    ingredient   String
   checked Boolean @default(false)
   userId  Int
   users   users   @relation(fields: [userId], references: [id])
@@ -78,7 +79,9 @@ model ListItem {
 
 model storage {
   id     Int    @id @default(autoincrement())
-  item   String
+
+  amount    String
+  ingredient    String
   category String[]
   userId Int
   users  users  @relation(fields: [userId], references: [id])

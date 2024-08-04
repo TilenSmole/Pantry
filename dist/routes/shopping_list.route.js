@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const shopping_list_controller_1 = require("../controllers/shopping_list.controller");
+const middleweartester_1 = require("../middleweartester");
+const express = require("express");
+const router = express.Router();
+router.get("/get-users-shopping-list-mobile", middleweartester_1.authenticateMiddlewareM, shopping_list_controller_1.getShoppingListMobile);
+router.post("/add-a-shopping-list", middleweartester_1.authenticateMiddleware, shopping_list_controller_1.addShoppingList);
+router.post("/add-a-shopping-list-mobile", middleweartester_1.authenticateMiddlewareM, shopping_list_controller_1.addShoppingListMobile);
+router.delete("/delete-item-mobile", middleweartester_1.authenticateMiddlewareM, shopping_list_controller_1.deleteItemMobile);
+router.put("/update-a-shopping-list-mobile", middleweartester_1.authenticateMiddlewareM, shopping_list_controller_1.updateShoppingListMobile);
+module.exports = router;

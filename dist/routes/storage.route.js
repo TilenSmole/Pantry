@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const storage_controller_1 = require("../controllers/storage.controller");
+const middleweartester_1 = require("../middleweartester");
+const express = require("express");
+const router = express.Router();
+router.delete("/delete-storage-item-mobile", middleweartester_1.authenticateMiddlewareM, storage_controller_1.deleteItemMobile);
+router.put("/add-item-from-sList-mobile", middleweartester_1.authenticateMiddlewareM, storage_controller_1.addItemFromListMobile);
+router.get("/", middleweartester_1.authenticateMiddlewareM, storage_controller_1.getStorage);
+router.post("/add-storage-item-mobile", middleweartester_1.authenticateMiddlewareM, storage_controller_1.addItemMobile);
+router.put("/update-storage-mobile", middleweartester_1.authenticateMiddlewareM, storage_controller_1.updateStorageMobile);
+module.exports = router;

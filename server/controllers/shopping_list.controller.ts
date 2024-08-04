@@ -60,13 +60,13 @@ export async function addShoppingList(req: Request, res: Response, next: NextFun
 export async function addShoppingListMobile(req: Request, res: Response, next: NextFunction) {
     try {
         const userId = res.locals.decodedToken.id;
-        const { item } = req.body as { item: string };
-        console.log(item);
+        const {   amount, ingredient } = req.body;  
 
 
         await prisma.listItem.create({
             data: {
-                item : item, 
+                amount : amount, 
+                ingredient : ingredient,
                 userId : userId,
             },
         });
@@ -107,20 +107,19 @@ export async function deleteItemMobile(req: Request, res: Response, next: NextFu
 export async function updateShoppingListMobile(req: Request, res: Response, next: NextFunction) {
     try {
         const userId = res.locals.decodedToken.id;
-        const { item, id } = req.body;
-        console.log(item);
-        console.log(id);
+        const { amount, ingredient,item, id } = req.body;
+   
 
-      //  if(item && id){
             await prisma.listItem.update({
                 where: {
                     id : Number(id)
                 },
                 data: {
-                    item : item, 
+                    amount : amount, 
+                ingredient : ingredient,
                 },
             });
-    //    }
+    
 
 
          return res.status(200).json();

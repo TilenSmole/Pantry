@@ -66,5 +66,10 @@
     "@types/cors": "^2.8.17",
     "prisma": "^5.17.0",
     "ts-node": "^10.9.2"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

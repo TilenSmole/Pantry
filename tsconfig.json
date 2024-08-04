@@ -4,7 +4,10 @@
       "module": "commonjs",
       "outDir": "./dist",
       "strict": true,
-      "esModuleInterop": true
+      "esModuleInterop": true,
+      "noImplicitAny": false,
+
+      
     },
     "include": ["server/*.ts","server/**/*.ts"],
     "exclude": ["node_modules"]
