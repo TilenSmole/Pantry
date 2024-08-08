@@ -1,4 +1,4 @@
-import { addItemFromListMobile , getStorage, deleteItemMobile, addItemMobile, updateStorageMobile} from "../controllers/storage.controller";
+import { addItemFromListMobile , getStorage, deleteItemMobile, addItemMobile, updateStorageMobile,updateStorageMobile2,cook,addToShoppingList} from "../controllers/storage.controller";
 import   {authenticateMiddleware, authenticateMiddlewareM}  from "../middleweartester"
   const express = require("express")
   
@@ -12,6 +12,9 @@ import   {authenticateMiddleware, authenticateMiddlewareM}  from "../middleweart
   router.get("/",authenticateMiddlewareM, getStorage)
   router.post("/add-storage-item-mobile",authenticateMiddlewareM, addItemMobile)
   router.put("/update-storage-mobile",authenticateMiddlewareM, updateStorageMobile)
+  router.put("/update-storage-mobile2",authenticateMiddlewareM, updateStorageMobile2)
+  router.put("/cook",authenticateMiddlewareM, cook)
+  router.post("/add-to-shopping-list",authenticateMiddlewareM, addToShoppingList)
 
   
 

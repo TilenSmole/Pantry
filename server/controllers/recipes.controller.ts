@@ -25,7 +25,8 @@ console.log(all_recepies.length);
 export async function addRecepie(req: Request, res: Response, next: NextFunction) {
     try {
       const userId = res.locals.decodedToken.id;
-      const { id, title, ingredients,instructions , imageUrl, prep_time, cook_time, comment} = req.body;
+      console.log(userId);
+      const {  title, ingredients,instructions ,amounts, imageUrl, prep_time, cook_time} = req.body;
 
 
 
@@ -33,12 +34,12 @@ export async function addRecepie(req: Request, res: Response, next: NextFunction
         data:{
           name: title,
           ingredients: ingredients,
+          amounts: amounts,
           instructions: instructions,
           cook_time: cook_time,
           prep_time: prep_time,
           imageUrl : imageUrl,
-          userId :userId,
-          comment: comment
+          userId :1,
         }
 
      })

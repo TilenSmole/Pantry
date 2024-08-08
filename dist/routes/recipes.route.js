@@ -7,4 +7,5 @@ const router = express.Router();
 router.get("/", recipes_controller_1.getRecepies);
 router.post("/add-recipe", middleweartester_1.authenticateMiddleware, recipes_controller_1.addRecepie);
 router.post("/add-recipe-mobile", middleweartester_1.authenticateMiddlewareM, recipes_controller_1.addRecepie);
+router.post("/add-note", middleweartester_1.authenticateMiddlewareM, recipes_controller_1.addRecepie);
 module.exports = router;

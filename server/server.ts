@@ -7,6 +7,7 @@ const recepy_route = require('./routes/recipes.route')
 const account_route = require('./routes/account.route') 
 const shopping_list_route = require('./routes/shopping_list.route') 
 const storage_route = require('./routes/storage.route') 
+const notes_route= require('./routes/notes.route')
 //node dist/server.js
     
 
@@ -15,9 +16,10 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware to enable CORS
 const corsOptions: cors.CorsOptions = {
-    origin: '*',
+    origin: 'http://localhost:3000', // Replace with your client application's origin
     credentials: true,
 };
+
 
 
   
@@ -43,6 +45,7 @@ app.use('/recipes', recepy_route);
 app.use('/shopping-list', shopping_list_route);
 
 
+app.use('/notes', notes_route);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

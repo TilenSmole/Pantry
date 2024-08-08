@@ -9,6 +9,9 @@ import   {authenticateMiddleware, authenticateMiddlewareM}  from "../middleweart
   router.post("/add-recipe-mobile",authenticateMiddlewareM, addRecepie)
 
 
+  router.post("/add-note",authenticateMiddlewareM, addRecepie)
+
+
 
 
   module.exports = router

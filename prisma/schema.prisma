@@ -25,12 +25,14 @@ model users {
   // ShoppingList ShoppingList[]
   ListItem ListItem[]
   storage  storage[]
+  notes    notes[]
 }
 
 model recipes {
   id           Int      @id @default(autoincrement())
   name         String
   instructions String
+  amounts      String[]
   ingredients  String[]
   tags         String[]
   imageUrl     String?
@@ -38,9 +40,9 @@ model recipes {
   prep_time    String?
   cook_time    String?
   comment      String?
-  // Define a relation to the user who created this recipes
   user         users    @relation("user_recipes", fields: [userId], references: [id])
   userId       Int      @default(1)
+  notes        notes[]
 }
 
 model Foods {
@@ -58,6 +60,34 @@ model Foods {
   isVegetarian  Boolean?
 }
 
+model ListItem {
+  id         Int     @id @default(autoincrement())
+  amount     String
+  ingredient String
+  checked    Boolean @default(false)
+  userId     Int
+  users      users   @relation(fields: [userId], references: [id])
+}
+
+model storage {
+  id Int @id @default(autoincrement())
+
+  amount     String
+  ingredient String
+  category   String[]
+  userId     Int
+  users      users    @relation(fields: [userId], references: [id])
+}
+
+model notes {
+  id       Int     @id @default(autoincrement())
+  note     String
+  userId   Int
+  recipeID Int
+  users    users   @relation(fields: [userId], references: [id])
+  Recipes  recipes @relation(fields: [recipeID], references: [id])
+}
+
 //model ShoppingList {
 //  id        Int        @id @default(autoincrement())
 //  userId    Int
@@ -67,22 +97,3 @@ model Foods {
 //  items     ListItem[] @relation("ShoppingListItems")
 //
 //}
-
-model ListItem {
-  id      Int     @id @default(autoincrement())
-  amount    String
-    ingredient   String
-  checked Boolean @default(false)
-  userId  Int
-  users   users   @relation(fields: [userId], references: [id])
-}
-
-model storage {
-  id     Int    @id @default(autoincrement())
-
-  amount    String
-  ingredient    String
-  category String[]
-  userId Int
-  users  users  @relation(fields: [userId], references: [id])
-}

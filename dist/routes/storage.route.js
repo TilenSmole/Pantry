@@ -9,4 +9,7 @@ router.put("/add-item-from-sList-mobile", middleweartester_1.authenticateMiddlew
 router.get("/", middleweartester_1.authenticateMiddlewareM, storage_controller_1.getStorage);
 router.post("/add-storage-item-mobile", middleweartester_1.authenticateMiddlewareM, storage_controller_1.addItemMobile);
 router.put("/update-storage-mobile", middleweartester_1.authenticateMiddlewareM, storage_controller_1.updateStorageMobile);
+router.put("/update-storage-mobile2", middleweartester_1.authenticateMiddlewareM, storage_controller_1.updateStorageMobile2);
+router.put("/cook", middleweartester_1.authenticateMiddlewareM, storage_controller_1.cook);
+router.post("/add-to-shopping-list", middleweartester_1.authenticateMiddlewareM, storage_controller_1.addToShoppingList);
 module.exports = router;
